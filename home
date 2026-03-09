@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Angelina Ballerina</title>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Quicksand:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background-color: #c57fc5;
+    background-image: radial-gradient(circle, #b56ab5 1.5px, transparent 1.5px);
+    background-size: 28px 28px;
+    font-family: 'Quicksand', sans-serif;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+  }
+
+  .outer-frame {
+    background: linear-gradient(135deg, #e8a0d8 0%, #f0b8e0 50%, #e8a0d8 100%);
+    border: 6px solid #c060b0;
+    border-radius: 18px;
+    padding: 12px;
+    width: 100%;
+    max-width: 900px;
+    box-shadow: 0 8px 32px rgba(100,0,100,0.3);
+  }
+
+  .inner-border {
+    border: 4px solid #e070c0;
+    border-radius: 12px;
+    overflow: hidden;
+  }
+
+  .site-wrapper {
+    display: flex;
+    flex-direction: column;
+    background: #f8e0f0;
+  }
+
+  /* TOP BAR */
+  .top-bar {
+    background: linear-gradient(180deg, #f8c8e8 0%, #f0a8d8 100%);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px 16px;
+    border-bottom: 3px solid #e070c0;
+  }
+
+  .logo-area {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .logo-oval {
+    background: linear-gradient(135deg, #fff 60%, #f8d8f0 100%);
+    border: 3px solid #d050a0;
+    border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+    padding: 8px 22px;
+    text-align: center;
+    position: relative;
+  }
+  .logo-oval .star {
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    font-size: 22px;
+    color: #d050a0;
+  }
+  .logo-title {
+    font-family: 'Pacifico', cursive;
+    font-size: 1.5rem;
+    color: #c03090;
+    line-height: 1.1;
+    text-shadow: 1px 1px 0 #f8c8e8;
+  }
+  .logo-subtitle {
+    font-family: 'Pacifico', cursive;
+    font-size: 1.1rem;
+    color: #c03090;
+  }
+  .logo-tm {
+    font-size: 0.5rem;
+    color: #a02070;
+    vertical-align: super;
+  }
+
+  .have-fun {
+    font-family: 'Pacifico', cursive;
+    font-size: 1.3rem;
+    color: #a020a0;
+    margin-left: 20px;
+  }
+
+  .fun-games-banner {
+    background: linear-gradient(135deg, #fff 0%, #f8f0c0 100%);
+    border: 3px solid #e8c030;
+    border-radius: 8px 8px 16px 16px;
+    padding: 6px 28px;
+    font-family: 'Pacifico', cursive;
+    font-size: 1.2rem;
+    color: #c03090;
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .fun-games-banner::before {
+    content: '▶';
+    position: absolute;
+    right: -18px;
+    color: #c060c0;
+    font-size: 1rem;
+  }
+  .ribbon-left {
+    position: absolute;
+    left: 0;
+    top: -4px;
+    width: 14px;
+    height: 14px;
+    background: #e0b028;
+    border-radius: 50% 0 0 50%;
+  }
+
+  /* MAIN CONTENT */
+  .main-content {
+    display: flex;
+    min-height: 420px;
+  }
+
+  /* LEFT NAV */
+  .left-nav {
+    background: linear-gradient(180deg, #f8d0f0 0%, #f0b8e8 100%);
+    width: 200px;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding: 12px 8px;
+    border-right: 3px solid #e070c0;
+  }
+
+  .nav-item {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    cursor: pointer;
+    transition: transform 0.15s;
+  }
+  .nav-item:hover { transform: translateX(3px); }
+
+  .nav-icon {
+    width: 52px;
+    height: 46px;
+    border-radius: 8px 0 0 8px;
+    border: 2px solid #c060a0;
+    border-right: none;
+    overflow: hidden;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.4rem;
+    background: linear-gradient(135deg, #ffd8f0, #ffb8e0);
+  }
+
+  .nav-btn {
+    flex: 1;
+    background: linear-gradient(180deg, #f080c0 0%, #d85aaa 100%);
+    border: 2px solid #c060a0;
+    border-radius: 0 20px 20px 0;
+    padding: 6px 12px;
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 700;
+    font-size: 0.9rem;
+    color: white;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+    cursor: pointer;
+    text-align: center;
+    line-height: 1.2;
+  }
+  .nav-btn:hover {
+    background: linear-gradient(180deg, #ff90d0 0%, #e86aba 100%);
+  }
+  .nav-btn.active {
+    background: linear-gradient(180deg, #ff70b0 0%, #e050a0 100%);
+  }
+
+  /* SCENE AREA */
+  .scene-area {
+    flex: 1;
+    background: linear-gradient(180deg, #b8e8f8 0%, #d8f0e0 40%, #e8d8c0 100%);
+    position: relative;
+    overflow: hidden;
+    min-height: 380px;
+  }
+
+  /* Sky & ground illustration */
+  .sky {
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 45%;
+    background: linear-gradient(180deg, #a8ddf8 0%, #c8eeff 100%);
+  }
+  .ground {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 35%;
+    background: linear-gradient(180deg, #d8e8c0 0%, #c8d8b0 100%);
+  }
+  .road {
+    position: absolute;
+    bottom: 18%;
+    left: 0; right: 0;
+    height: 16%;
+    background: #d8c8a0;
+    border-top: 2px solid #b8a880;
+    border-bottom: 2px solid #b8a880;
+  }
+
+  /* Buildings */
+  .building {
+    position: absolute;
+    bottom: 30%;
+  }
+  .b1 {
+    left: 5%;
+    width: 120px;
+    height: 130px;
+    background: linear-gradient(180deg, #f0e8d0 0%, #e8d8b8 100%);
+    border: 2px solid #c8b890;
+    border-radius: 4px 4px 0 0;
+  }
+  .b1::before {
+    content: '';
+    position: absolute;
+    top: -30px; left: -10px; right: -10px;
+    height: 36px;
+    background: #8B7355;
+    clip-path: polygon(10% 100%, 50% 0%, 90% 100%);
+  }
+  .b2 {
+    left: 28%;
+    width: 100px;
+    height: 100px;
+    background: linear-gradient(180deg, #f8f4f0 0%, #f0e8e0 100%);
+    border: 2px solid #d0c0b0;
+    border-radius: 4px 4px 0 0;
+  }
+  .b2::before {
+    content: '';
+    position: absolute;
+    top: -22px; left: -8px; right: -8px;
+    height: 28px;
+    background: #7a6550;
+    clip-path: polygon(10% 100%, 50% 0%, 90% 100%);
+  }
+  .b3 {
+    right: 5%;
+    width: 130px;
+    height: 140px;
+    background: linear-gradient(180deg, #f8f2e8 0%, #efe5d5 100%);
+    border: 2px solid #d0c0a0;
+  }
+  .b3::before {
+    content: '';
+    position: absolute;
+    top: -24px; left: 0; right: 0;
+    height: 30px;
+    background: #c06050;
+    clip-path: polygon(0% 100%, 50% 0%, 100% 100%);
+  }
+
+  /* Windows */
+  .window {
+    position: absolute;
+    background: #a8c8e0;
+    border: 2px solid #8090a0;
+    border-radius: 2px;
+  }
+
+  /* Trees */
+  .tree {
+    position: absolute;
+    bottom: 28%;
+  }
+  .tree-trunk {
+    width: 10px;
+    height: 20px;
+    background: #8B6040;
+    margin: 0 auto;
+  }
+  .tree-top {
+    width: 40px;
+    height: 50px;
+    background: radial-gradient(circle, #70a840 30%, #508030 100%);
+    border-radius: 50% 50% 40% 40%;
+    margin: 0 auto;
+  }
+
+  /* Street lamp */
+  .lamp {
+    position: absolute;
+    bottom: 28%;
+    left: 22%;
+  }
+  .lamp-post {
+    width: 6px;
+    height: 90px;
+    background: linear-gradient(90deg, #808080, #c0c0c0, #808080);
+    margin: 0 auto;
+  }
+  .lamp-head {
+    width: 18px;
+    height: 10px;
+    background: #909090;
+    border-radius: 8px 8px 0 0;
+    margin: 0 auto;
+  }
+  .lamp-light {
+    width: 8px;
+    height: 14px;
+    background: #ffffc0;
+    border-radius: 0 0 4px 4px;
+    margin: 0 auto;
+    box-shadow: 0 0 8px #ffff80;
+  }
+
+  /* Characters - emoji art */
+  .char {
+    position: absolute;
+    font-size: 2rem;
+    user-select: none;
+  }
+  .char-angelina {
+    bottom: 26%;
+    left: 46%;
+    font-size: 3.5rem;
+    animation: sway 2.5s ease-in-out infinite;
+  }
+  .char-alice {
+    bottom: 26%;
+    left: 56%;
+    font-size: 3rem;
+    animation: sway 2.8s ease-in-out infinite reverse;
+  }
+  .char-henry {
+    bottom: 25%;
+    left: 34%;
+    font-size: 2.5rem;
+  }
+  .char-grandma {
+    bottom: 26%;
+    right: 8%;
+    font-size: 2.5rem;
+  }
+  .char-group {
+    bottom: 27%;
+    left: 10%;
+    font-size: 2rem;
+  }
+  .jump-rope {
+    position: absolute;
+    bottom: 30%;
+    left: 44%;
+    width: 180px;
+    height: 60px;
+    border-bottom: 3px solid #808060;
+    border-radius: 0 0 50% 50%;
+    transform-origin: center bottom;
+    animation: rope 1.5s linear infinite;
+  }
+
+  @keyframes sway {
+    0%, 100% { transform: rotate(-3deg) translateY(0); }
+    50% { transform: rotate(3deg) translateY(-4px); }
+  }
+  @keyframes rope {
+    0% { transform: scaleX(1); }
+    50% { transform: scaleX(0.6) scaleY(0.8); }
+    100% { transform: scaleX(1); }
+  }
+
+  /* Tagline */
+  .tagline {
+    position: absolute;
+    bottom: 8px;
+    left: 0; right: 0;
+    text-align: center;
+    font-family: 'Pacifico', cursive;
+    font-size: 1.1rem;
+    color: #a03080;
+    text-shadow: 1px 1px 0 #f8c8e8;
+    letter-spacing: 1px;
+  }
+
+  /* Striped border top of scene */
+  .scene-stripes {
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 12px;
+    background: repeating-linear-gradient(
+      90deg,
+      #f090c0 0px, #f090c0 18px,
+      #fff0f8 18px, #fff0f8 36px
+    );
+    border-bottom: 2px solid #e060a8;
+  }
+
+  /* BOTTOM FOOTER */
+  .footer {
+    background: linear-gradient(180deg, #f8d0f0 0%, #f0b8e0 100%);
+    border-top: 3px solid #e070c0;
+    padding: 10px 20px;
+    text-align: center;
+    font-size: 0.7rem;
+    color: #7030a0;
+    line-height: 1.5;
+  }
+
+  /* Pink stripe border on sides */
+  .side-stripes {
+    background: repeating-linear-gradient(
+      180deg,
+      #f090c0 0px, #f090c0 18px,
+      #fff0f8 18px, #fff0f8 36px
+    );
+  }
+
+  .content-row {
+    display: flex;
+  }
+
+  .stripe-side {
+    width: 14px;
+    background: repeating-linear-gradient(
+      180deg,
+      #f090c0 0px, #f090c0 18px,
+      #fff0f8 18px, #fff0f8 36px
+    );
+    border-right: 2px solid #e060a8;
+  }
+  .stripe-side.right {
+    border-right: none;
+    border-left: 2px solid #e060a8;
+  }
+
+  /* Nav icon illustrations */
+  .icon-mouse { font-size: 1.3rem; }
+</style>
+</head>
+<body>
+
+<div class="outer-frame">
+  <div class="inner-border">
+    <div class="site-wrapper">
+
+      <!-- TOP BAR -->
+      <div class="top-bar">
+        <div class="logo-area">
+          <div class="logo-oval">
+            <span class="star">★</span>
+            <div class="logo-title">Angelina<br>Ballerina</div>
+            <span class="logo-tm">™</span>
+          </div>
+        </div>
+        <div class="have-fun">Have fun!</div>
+        <div class="fun-games-banner">
+          <span>Fun &amp; Games</span>
+        </div>
+      </div>
+
+      <!-- MAIN ROW -->
+      <div class="content-row">
+        <div class="stripe-side"></div>
+
+        <!-- LEFT NAV -->
+        <div class="left-nav">
+
+          <div class="nav-item">
+            <div class="nav-icon">🐭</div>
+            <div class="nav-btn active">Home</div>
+          </div>
+
+          <div class="nav-item">
+            <div class="nav-icon">🩰</div>
+            <div class="nav-btn">Meet the<br>Cast</div>
+          </div>
+
+          <div class="nav-item">
+            <div class="nav-icon">🎮</div>
+            <div class="nav-btn">Fun &amp;<br>Games</div>
+          </div>
+
+          <div class="nav-item">
+            <div class="nav-icon">🎬</div>
+            <div class="nav-btn">Behind the<br>Scenes</div>
+          </div>
+
+          <div class="nav-item">
+            <div class="nav-icon">🩺</div>
+            <div class="nav-btn">Real<br>Ballet</div>
+          </div>
+
+          <div class="nav-item">
+            <div class="nav-icon">📰</div>
+            <div class="nav-btn">News</div>
+          </div>
+
+          <div class="nav-item">
+            <div class="nav-icon">🎁</div>
+            <div class="nav-btn">Shop</div>
+          </div>
+
+        </div>
+
+        <!-- SCENE -->
+        <div class="scene-area">
+          <div class="scene-stripes"></div>
+          <div class="sky"></div>
+
+          <!-- Buildings -->
+          <div class="building b1">
+            <div class="window" style="top:20px;left:15px;width:22px;height:28px;"></div>
+            <div class="window" style="top:20px;left:50px;width:22px;height:28px;"></div>
+            <div class="window" style="top:65px;left:15px;width:22px;height:28px;"></div>
+            <div class="window" style="top:65px;left:50px;width:22px;height:28px;"></div>
+          </div>
+          <div class="building b2">
+            <div class="window" style="top:20px;left:14px;width:18px;height:22px;"></div>
+            <div class="window" style="top:20px;left:44px;width:18px;height:22px;"></div>
+            <div class="window" style="top:55px;left:28px;width:18px;height:28px;background:#b8d8f0;"></div>
+          </div>
+          <div class="building b3">
+            <div class="window" style="top:22px;left:12px;width:22px;height:26px;"></div>
+            <div class="window" style="top:22px;left:52px;width:22px;height:26px;background:#c8d8a0;"></div>
+            <div class="window" style="top:62px;left:12px;width:22px;height:26px;"></div>
+            <div class="window" style="top:62px;left:52px;width:22px;height:26px;"></div>
+          </div>
+
+          <!-- Trees -->
+          <div class="tree" style="right:18%">
+            <div class="tree-top"></div>
+            <div class="tree-trunk"></div>
+          </div>
+          <div class="tree" style="right:12%">
+            <div class="tree-top" style="width:30px;height:40px;"></div>
+            <div class="tree-trunk" style="height:14px;"></div>
+          </div>
+
+          <!-- Lamp post -->
+          <div class="lamp">
+            <div class="lamp-head"></div>
+            <div class="lamp-light"></div>
+            <div class="lamp-post"></div>
+          </div>
+
+          <div class="ground"></div>
+          <div class="road"></div>
+
+          <!-- Jump rope & characters -->
+          <div class="jump-rope"></div>
+          <div class="char char-group" style="font-size:2.2rem;">🐭🐭</div>
+          <div class="char char-henry" style="font-size:2.2rem; color:#e8a020;">🐭</div>
+          <div class="char char-angelina" style="font-size:3rem;">🐭</div>
+          <div class="char char-alice" style="font-size:2.8rem;">🐭</div>
+          <div class="char char-grandma" style="font-size:2.2rem;">🐭</div>
+
+          <div class="tagline">dance and dream and be a star.</div>
+        </div>
+
+        <div class="stripe-side right"></div>
+      </div>
+
+      <!-- FOOTER -->
+      <div class="footer">
+        Angelina Ballerina © 2006 HIT Entertainment Limited, created and devised by<br>
+        Helen Craig and Katharine Holabird. The Angelina Ballerina name and character<br>
+        and the dancing Angelina logo are trademarks of HIT Entertainment Limited,<br>
+        Katharine Holabird and Helen Craig. Reg. U.S. Pat. &amp; Tm. Off. and in other countries.
+      </div>
+
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
